@@ -17,7 +17,9 @@ const items = await fetchContentItems();
 
 <Layout meta={meta}>
   <div class="grid md:grid-cols-4 gap-8">
-    <Filters client:load items={items} />
+    <aside>
+      <Filters client:load items={items} />
+    </aside>
     <div class="md:col-span-3">
       <ItemList client:load items={items} />
     </div>
