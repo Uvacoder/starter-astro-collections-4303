@@ -4,4 +4,5 @@ description: "NPM is a package manager with an online registry of public and pai
 image: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/db/Npm-logo.svg/540px-Npm-logo.svg.png"
 category: "Package manager"
 pricing: [free, paid]
+link: https://www.npmjs.com
 ---

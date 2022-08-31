@@ -2,7 +2,6 @@
 import { SITE } from "~/config.mjs";
 import { fetchContentItems } from "~/utils/fetchItems";
 import Layout from "~/layouts/PageLayout.astro";
-import Picture from "~/components/core/Picture.astro";
 
 export async function getStaticPaths() {
   const posts = await fetchContentItems();
@@ -24,14 +23,27 @@ const meta = {
   <h1 class="text-2xl font-bold">{post.title}</h1>
   <h1 class="text-lg">{post.description}</h1>
   <hr class="my-4" />
-  <h1 class="text-lg">{post.body}</h1>
 
-  <Picture
+  <img
     src={post.image}
-    class="max-w-full h-full object-cover"
-    widths={[400]}
-    sizes="(max-width: 767px) 400px, 768px"
+    class="max-w-lg h-full object-cover"
     alt={post.description}
-    aspectRatio={1}
   />
+
+  {
+    post.link && (
+      <a
+        href={post.link}
+        class="inline-block mt-8 px-12 py-2 border rounded-lg hover:bg-slate-900 hover:text-slate-100"
+        target="_blank"
+        rel="noopener"
+      >
+        Visit →
+      </a>
+    )
+  }
+  
+  <hr class="my-4" />
+
+  <div class="prose" set:html={post.body}></div>
 </Layout>

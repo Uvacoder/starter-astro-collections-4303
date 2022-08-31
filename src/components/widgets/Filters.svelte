@@ -14,6 +14,7 @@
       body,
       image,
       excerpt,
+      link,
       ...filters
     } = item;
 
@@ -66,8 +67,8 @@
   };
 </script>
 
-<aside id="filters">
-  <h2 class="font-bold mb-4 text-lg flex justify-between items-center">
+<aside id="filters" class="bg-slate-100 dark:bg-slate-800 rounded-xl shadow p-4">
+  <h2 class="mb-2 text-lg flex justify-between items-center border-b border-slate-300">
     <span>Filters</span>
     {#if hasFilters}
       <button on:click={clearFilters} aria-label="Clear filters" class="text-slate-500">
