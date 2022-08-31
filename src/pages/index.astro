@@ -1,0 +1,25 @@
+---
+import { SITE } from "~/config.mjs";
+import { getCanonical, getHomePermalink } from "~/utils/permalinks";
+import Layout from "~/layouts/PageLayout.astro";
+import { fetchContentItems } from "~/utils/fetchItems";
+import ItemList from "~/components/widgets/ItemList.svelte";
+import Filters from "~/components/widgets/Filters.svelte";
+
+const meta = {
+  title: SITE.title,
+  description: SITE.description,
+  canonical: getCanonical(getHomePermalink()),
+};
+
+const items = await fetchContentItems();
+---
+
+<Layout meta={meta}>
+  <div class="grid md:grid-cols-4 gap-8">
+    <Filters client:load items={items} />
+    <div class="md:col-span-3">
+      <ItemList client:load items={items} />
+    </div>
+  </div>
+</Layout>

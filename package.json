@@ -1,0 +1,31 @@
+{
+  "name": "systic",
+  "description": "Astro theme to create a curated list page.",
+  "version": "0.1.0",
+  "repository": "https://github.com/apvarun/systic-astro-theme",
+  "author": "Varun A P",
+  "license": "MIT",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build && subfont -ir --no-fallbacks --silent --root dist",
+    "preview": "astro preview"
+  },
+  "devDependencies": {
+    "@astrojs/image": "^0.3.3",
+    "@astrojs/rss": "^1.0.0",
+    "@astrojs/sitemap": "^1.0.0",
+    "@astrojs/svelte": "^1.0.0",
+    "@astrojs/tailwind": "^1.0.0",
+    "@julian_cataldo/astro-analytics": "^0.11.5",
+    "@tailwindcss/typography": "^0.5.4",
+    "astro": "^1.0.0",
+    "astro-icon": "^0.7.3",
+    "slugify": "^1.6.5",
+    "subfont": "^6.9.0",
+    "svelte": "^3.46.4"
+  },
+  "dependencies": {
+    "nanostores": "^0.6.0"
+  }
+}
