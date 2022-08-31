@@ -1,4 +1,4 @@
-import items from "./data/items"
+import items from "./data/items.mjs"
 
 export const SITE = {
   domain: "https://systic.vercel.app",
