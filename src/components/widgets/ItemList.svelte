@@ -1,5 +1,5 @@
 <script>
-import { SITE } from "~/config.mjs";
+  import { SITE } from "~/config.mjs";
 
   import { filters } from "~/utils/filterStore";
 
@@ -7,8 +7,17 @@ import { SITE } from "~/config.mjs";
 
   let filteredItems = items;
 
-  filters.listen((filter) => {
+  filters.listen(({ search, ...filter }) => {
     let newItems = items;
+
+    if (search) {
+      newItems = newItems.filter(
+        (item) =>
+          item.title.toLowerCase().includes(search.toLowerCase()) ||
+          item.description.toLowerCase().includes(search.toLowerCase())
+      );
+    }
+
     Object.entries(filter).forEach(([key, values]) => {
       if (Array.isArray(values)) {
         if (values.length === 0) return;
@@ -32,7 +41,12 @@ import { SITE } from "~/config.mjs";
           <h3 class="font-bold text-lg">{item.title}</h3>
         </a>
         {#if item.link}
-          <a class="flex-shrink-0 invisible group-hover:visible text-slate-300 hover:text-slate-700" href={item.link} target="_blank" rel="noopener">
+          <a
+            class="flex-shrink-0 invisible group-hover:visible text-slate-300 hover:text-slate-700"
+            href={item.link}
+            target="_blank"
+            rel="noopener"
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="20"

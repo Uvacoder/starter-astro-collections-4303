@@ -65,13 +65,26 @@
       inputElt.checked = false;
     });
   };
+
+  const updateSearch = (evt) => {
+    filters.setKey("search", evt.target.value || "");
+  };
 </script>
 
-<aside id="filters" class="bg-slate-100 dark:bg-slate-800 rounded-xl shadow p-4">
-  <h2 class="mb-2 text-lg flex justify-between items-center border-b border-slate-300">
+<aside
+  id="filters"
+  class="bg-slate-100 dark:bg-slate-800 rounded-xl shadow p-4"
+>
+  <h2
+    class="mb-2 text-lg flex justify-between items-center border-b border-slate-300"
+  >
     <span>Filters</span>
     {#if hasFilters}
-      <button on:click={clearFilters} aria-label="Clear filters" class="text-slate-500">
+      <button
+        on:click={clearFilters}
+        aria-label="Clear filters"
+        class="text-slate-500"
+      >
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="24"
@@ -90,6 +103,12 @@
       </button>
     {/if}
   </h2>
+  
+  <label>
+    <div class="mb-2">Search</div>
+    <input type="text" class="px-2 py-1 w-full rounded" placeholder="Text to search for.." name="Search" on:input={updateSearch} />
+  </label>
+
   {#each fOptions as [key, values]}
     <div>
       <div class="uppercase font-bold pt-2 mb-4 text-lg">{key}</div>

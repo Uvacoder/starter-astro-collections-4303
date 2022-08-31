@@ -1,3 +1,5 @@
-import { map } from 'nanostores'
+import { map } from "nanostores";
 
-export const filters = map({} as Record<string, string|string[]>)
+export const filters = map({
+  search: "",
+} as Record<string, string | string[]>);
