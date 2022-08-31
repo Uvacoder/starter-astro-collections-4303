@@ -37,7 +37,7 @@
 
 ## Demo
 
-(-coming soon-)
+[https://systic.vercel.app](https://systic.vercel.app)
 
 <br>
 
