@@ -9,6 +9,6 @@ export const getNormalizedItem = async (item) => {
     description: frontmatter.description,
     body: compiledContent(),
     image: frontmatter.image,
-    excerpt: frontmatter.excerpt,
+    excerpt: frontmatter.excerpt || '',
   };
 };

@@ -1,3 +1,5 @@
+import items from "./data/items"
+
 export const SITE = {
   domain: "https://systic.vercel.app",
   baseUrl: "/",
@@ -8,6 +10,13 @@ export const SITE = {
   googleAnalyticsId: false, // or "G-XXXXXXXXXX",
   googleSiteVerificationId: "",
 
+  // content: {
+  //   type: 'local',
+  // },
+  content: {
+    type: 'inline',
+    items
+  },
   contentSlug: "item",
 
   // Social page URL's
