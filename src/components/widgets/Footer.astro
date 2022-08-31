@@ -1,5 +1,6 @@
 ---
 import { Icon } from "astro-icon";
+import { SITE } from "~/config.mjs";
 
 const {} = Astro.props;
 ---
@@ -12,82 +13,94 @@ const {} = Astro.props;
       <div class="col-span-12 md:col-span-8">
         <div class="mb-2">
           <a class="inline-block font-bold text-xl" href="/">
-            Systic - Astro Theme
+            {SITE.title}
           </a>
         </div>
-        <div class="text-sm text-gray-600">Some Tagline</div>
+        <div class="text-sm text-gray-600">{SITE.description}</div>
       </div>
-      <div class="col-span-6 md:col-span-4">
-        <div class="text-gray-800 dark:text-gray-300 font-medium mb-2">
-          Other products / links
-        </div>
-        <ul class="text-sm">
-          <li class="mb-2">
-            <a
-              class="text-gray-600 hover:text-gray-700 dark:text-gray-400 transition duration-150 ease-in-out"
-              href="#"
-            >
-              Some page link
-            </a>
-          </li>
-        </ul>
-      </div>
+      {
+        SITE.footer.menu &&
+          SITE.footer.menu.links &&
+          SITE.footer.menu.links.length > 0 && (
+            <div class="col-span-6 md:col-span-4">
+              <div class="text-gray-800 dark:text-gray-300 font-medium mb-2">
+                {SITE.footer.menu.heading}
+              </div>
+              <ul class="text-sm">
+                {SITE.footer.menu.links.map((link) => (
+                  <li class="mb-2">
+                    <a
+                      class="text-gray-600 hover:text-gray-700 dark:text-gray-400 transition duration-150 ease-in-out"
+                      href={link.url}
+                    >
+                      {link.name}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )
+      }
     </div>
     <div class="md:flex md:items-center md:justify-between py-4 md:py-8">
       <ul class="flex mb-6 md:order-1 md:ml-4 md:mb-0">
-        <li>
-          <a
-            class="flex justify-center items-center text-gray-600 hover:text-gray-700 bg-white hover:bg-white-100 rounded-full shadow transition duration-150 ease-in-out dark:bg-gray-800 dark:text-gray-400 p-1.5"
-            aria-label="Twitter"
-            href="#"
-          >
-            <Icon name="tabler:brand-twitter" class="w-5 h-5" />
-          </a>
-        </li>
-        <li class="ml-4">
-          <a
-            class="flex justify-center items-center text-gray-600 hover:text-gray-700 bg-white hover:bg-white-100 rounded-full shadow transition duration-150 ease-in-out dark:bg-gray-800 dark:text-gray-400 p-1.5"
-            aria-label="Instagram"
-            href="#"
-          >
-            <Icon name="tabler:brand-instagram" class="w-5 h-5" />
-          </a>
-        </li>
-        <li class="ml-4">
-          <a
-            class="flex justify-center items-center text-gray-600 hover:text-gray-700 bg-white hover:bg-white-100 rounded-full shadow transition duration-150 ease-in-out dark:bg-gray-800 dark:text-gray-400 p-1.5"
-            aria-label="Facebook"
-            href="#"
-          >
-            <Icon name="tabler:brand-facebook" class="w-5 h-5" />
-          </a>
-        </li>
-        <li class="ml-4">
-          <a
-            class="flex justify-center items-center text-gray-600 hover:text-gray-700 bg-white hover:bg-white-100 rounded-full shadow transition duration-150 ease-in-out dark:bg-gray-800 dark:text-gray-400 p-1.5"
-            aria-label="RSS"
-            href="/rss.xml"
-          >
-            <Icon name="tabler:rss" class="w-5 h-5" />
-          </a>
-        </li>
-        <li class="ml-4">
-          <a
-            class="flex justify-center items-center text-gray-600 hover:text-gray-700 bg-white hover:bg-white-100 rounded-full shadow transition duration-150 ease-in-out dark:bg-gray-800 dark:text-gray-400 p-1.5"
-            aria-label="Github"
-            href="#"
-          >
-            <Icon name="tabler:brand-github" class="w-5 h-5" />
-          </a>
-        </li>
+        {
+          SITE.social.twitter && (
+            <li>
+              <a
+                class="flex justify-center items-center text-gray-600 hover:text-gray-700 bg-white hover:bg-white-100 rounded-full shadow transition duration-150 ease-in-out dark:bg-gray-800 dark:text-gray-400 p-1.5"
+                aria-label="Twitter"
+                href={SITE.social.twitter}
+              >
+                <Icon name="tabler:brand-twitter" class="w-5 h-5" />
+              </a>
+            </li>
+          )
+        }
+        {
+          SITE.social.instagram && (
+            <li class="ml-4">
+              <a
+                class="flex justify-center items-center text-gray-600 hover:text-gray-700 bg-white hover:bg-white-100 rounded-full shadow transition duration-150 ease-in-out dark:bg-gray-800 dark:text-gray-400 p-1.5"
+                aria-label="Instagram"
+                href={SITE.social.instagram}
+              >
+                <Icon name="tabler:brand-instagram" class="w-5 h-5" />
+              </a>
+            </li>
+          )
+        }
+        {
+          SITE.social.facebook && (
+            <li class="ml-4">
+              <a
+                class="flex justify-center items-center text-gray-600 hover:text-gray-700 bg-white hover:bg-white-100 rounded-full shadow transition duration-150 ease-in-out dark:bg-gray-800 dark:text-gray-400 p-1.5"
+                aria-label="Facebook"
+                href={SITE.social.facebook}
+              >
+                <Icon name="tabler:brand-facebook" class="w-5 h-5" />
+              </a>
+            </li>
+          )
+        }
+        {
+          SITE.social.github && (
+            <li class="ml-4">
+              <a
+                class="flex justify-center items-center text-gray-600 hover:text-gray-700 bg-white hover:bg-white-100 rounded-full shadow transition duration-150 ease-in-out dark:bg-gray-800 dark:text-gray-400 p-1.5"
+                aria-label="Github"
+                href={SITE.social.github}
+              >
+                <Icon name="tabler:brand-github" class="w-5 h-5" />
+              </a>
+            </li>
+          )
+        }
       </ul>
-      <div class="text-sm text-gray-700 mr-4 dark:text-slate-400">
-        Made by <a
-          class="text-blue-600 hover:underline dark:text-gray-200"
-          href="https://apvarun.com/"
-        >
-          apvarun
-        </a>, for the community. All rights reserved.
+      <div
+        class="text-sm text-gray-700 mr-4 dark:text-slate-400"
+        set:html={SITE.footer.copyright}
+      >
       </div>
     </div>
   </div>

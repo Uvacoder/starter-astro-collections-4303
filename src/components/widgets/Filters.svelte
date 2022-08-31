@@ -104,7 +104,7 @@
     {/if}
   </h2>
   
-  <label>
+  <label class="mb-2 block">
     <div class="mb-2">Search</div>
     <input type="text" class="px-2 py-1 w-full rounded" placeholder="Text to search for.." name="Search" on:input={updateSearch} />
   </label>

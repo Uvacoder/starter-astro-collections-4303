@@ -1,6 +1,4 @@
 export const SITE = {
-  name: "Systic",
-
   domain: "https://systic.vercel.app",
   baseUrl: "/",
 
@@ -9,6 +7,27 @@ export const SITE = {
 
   googleAnalyticsId: false, // or "G-XXXXXXXXXX",
   googleSiteVerificationId: "",
-  
+
   contentSlug: "item",
+
+  // Social page URL's
+  social: {
+    github: 'https://github.com',
+    twitter: 'https://twitter.com',
+    facebook: '',
+    instagram: '',
+  },
+
+  footer: {
+    menu: {
+      heading: "Other products / links",
+      links: [
+        {
+          name: "Some page link",
+          url: "#"
+        }
+      ]
+    },
+    copyright: `Made by <a class="text-blue-600 hover:underline dark:text-gray-200" href="https://apvarun.com/">apvarun</a>, for the community. All rights reserved.`,
+  }
 };

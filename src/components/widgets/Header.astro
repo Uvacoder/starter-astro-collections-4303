@@ -3,28 +3,38 @@ import { Icon } from "astro-icon";
 import Logo from "~/components/widgets/Logo.astro";
 import { getHomePermalink } from "~/utils/permalinks";
 
-const { } = Astro.props;
+const {} = Astro.props;
 ---
 
 <header
-  class="sticky top-0 z-40 flex-none mx-auto w-full bg-white md:bg-white/90 dark:bg-slate-900 dark:md:bg-slate-900/90 md:backdrop-blur-sm border-b dark:border-slate-800">
+  class="sticky top-0 z-40 flex-none mx-auto w-full bg-white md:bg-white/90 dark:bg-slate-900 dark:md:bg-slate-900/90 md:backdrop-blur-sm border-b dark:border-slate-800"
+>
   <div class="py-3 px-3 mx-auto w-full flex justify-between max-w-6xl">
     <div class="flex justify-between">
       <a class="flex items-center" href={getHomePermalink()}>
         <Logo />
       </a>
     </div>
-    <nav class="items-center w-auto flex text-gray-600 dark:text-slate-200 h-auto"
-      aria-label="Main navigation" id="menu">
+    <nav
+      class="items-center w-auto flex text-gray-600 dark:text-slate-200 h-auto"
+      aria-label="Main navigation"
+      id="menu"
+    >
       <div class="self-center flex items-center mb-0 collapse collapsed">
         <div class="items-center mr-3 flex">
-          <button type="button"
+          <button
+            type="button"
             class="text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 inline-flex items-center"
-            aria-label="Toggle between Dark and Light mode" data-aw-toggle-color-scheme>
+            aria-label="Toggle between Dark and Light mode"
+            data-aw-toggle-color-scheme
+          >
             <Icon name="tabler:sun" class="w-5 h-5" />
           </button>
-          <a class="text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 inline-flex items-center"
-            aria-label="RSS Feed" href="/rss.xml">
+          <a
+            class="text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 inline-flex items-center"
+            aria-label="RSS Feed"
+            href="/rss.xml"
+          >
             <Icon name="tabler:rss" class="w-5 h-5" />
           </a>
         </div>
@@ -34,14 +44,14 @@ const { } = Astro.props;
 </header>
 
 <style is:global>
-    [data-aw-toggle-menu] path {
-      @apply transition;
-    }
-    [data-aw-toggle-menu].expanded g > path:first-child {
-      @apply -rotate-45 translate-y-[15px] translate-x-[-3px];
-    }
+  [data-aw-toggle-menu] path {
+    @apply transition;
+  }
+  [data-aw-toggle-menu].expanded g > path:first-child {
+    @apply -rotate-45 translate-y-[15px] translate-x-[-3px];
+  }
 
-    [data-aw-toggle-menu].expanded g > path:last-child {
-      @apply rotate-45 translate-y-[-8px] translate-x-[14px];
-    }
+  [data-aw-toggle-menu].expanded g > path:last-child {
+    @apply rotate-45 translate-y-[-8px] translate-x-[14px];
+  }
 </style>

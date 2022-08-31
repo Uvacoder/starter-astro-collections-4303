@@ -68,7 +68,7 @@
           </a>
         {/if}
       </div>
-      <p>{item.description}</p>
+      <p class="line-clamp-4">{item.description}</p>
     </li>
   {/each}
 </ul>

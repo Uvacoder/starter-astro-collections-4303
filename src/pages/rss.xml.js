@@ -8,7 +8,7 @@ const items = await fetchContentItems();
 
 export const get = () =>
   rss({
-    title: `${SITE.name}’s Blog`,
+    title: SITE.title,
     description: SITE.description,
     site: import.meta.env.SITE,
 
