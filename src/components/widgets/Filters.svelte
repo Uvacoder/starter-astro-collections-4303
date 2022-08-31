@@ -73,7 +73,7 @@
 
 <aside
   id="filters"
-  class="bg-slate-100 dark:bg-slate-800 rounded-xl shadow p-4"
+  class="bg-slate-100 dark:bg-slate-800 rounded-lg shadow p-4"
 >
   <h2
     class="mb-2 text-lg flex justify-between items-center border-b border-slate-300"
@@ -106,7 +106,7 @@
   
   <label class="mb-2 block">
     <div class="mb-2">Search</div>
-    <input type="text" class="px-2 py-1 w-full rounded" placeholder="Text to search for.." name="Search" on:input={updateSearch} />
+    <input type="text" class="px-2 py-1 w-full rounded dark:bg-slate-600 dark:text-slate-200" placeholder="Text to search for.." name="Search" on:input={updateSearch} />
   </label>
 
   {#each fOptions as [key, values]}
