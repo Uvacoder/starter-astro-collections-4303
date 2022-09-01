@@ -1,9 +1,19 @@
 <script lang="ts">
+  import { onMount } from "svelte";
+
   import { filters } from "~/utils/filterStore";
 
   export let items = [];
 
   let filterOptions: Record<string, string[]> = {};
+
+  let openFilters = true;
+
+  onMount(() => {
+    if (window.matchMedia("(max-width: 768px)").matches) {
+      openFilters = false;
+    }
+  });
 
   items.forEach((item) => {
     const {
@@ -69,6 +79,8 @@
   const updateSearch = (evt) => {
     filters.setKey("search", evt.target.value || "");
   };
+
+  const toggleFilterSection = () => (openFilters = !openFilters);
 </script>
 
 <div
@@ -89,52 +101,80 @@
 
 <div id="filters" class="bg-slate-100 dark:bg-slate-800 rounded-lg shadow p-4">
   <h2
-    class="mb-2 text-lg flex justify-between items-center border-b border-slate-300"
+    class="text-lg flex justify-between items-center border-slate-300"
+    class:mb-2={openFilters}
+    class:border-b={openFilters}
   >
     <span>Filters</span>
-    {#if hasFilters}
+    <div class="flex items-center gap-2">
+      {#if hasFilters}
+        <button
+          on:click={clearFilters}
+          aria-label="Clear filters"
+          class="text-slate-500"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            stroke-width="2"
+            stroke="currentColor"
+            fill="none"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+            <rect x="4" y="4" width="16" height="16" rx="2" />
+            <path d="M10 10l4 4m0 -4l-4 4" />
+          </svg>
+        </button>
+      {/if}
       <button
-        on:click={clearFilters}
+        on:click={toggleFilterSection}
         aria-label="Clear filters"
         class="text-slate-500"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
+          class="transform"
+          class:rotate-180={!openFilters}
           width="24"
           height="24"
           viewBox="0 0 24 24"
-          stroke-width="2"
-          stroke="currentColor"
+          stroke-width="1.5"
+          stroke="#2c3e50"
           fill="none"
           stroke-linecap="round"
           stroke-linejoin="round"
         >
           <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-          <rect x="4" y="4" width="16" height="16" rx="2" />
-          <path d="M10 10l4 4m0 -4l-4 4" />
+          <polyline points="6 15 12 9 18 15" />
         </svg>
       </button>
-    {/if}
+    </div>
   </h2>
 
-  {#each fOptions as [key, values]}
-    <div>
-      <div class="uppercase font-bold pt-2 mb-4 text-lg">{key}</div>
-      <ul>
-        {#each values as value}
-          <li class="my-1">
-            <label>
-              <input
-                type={key == "category" ? "radio" : "checkbox"}
-                {value}
-                name={key}
-                on:change={updateFilter}
-              />
-              <span class="capitalize">{value}</span>
-            </label>
-          </li>
-        {/each}
-      </ul>
-    </div>
-  {/each}
+  {#if openFilters}
+    {#each fOptions as [key, values]}
+      <div>
+        <div class="uppercase font-bold pt-2 mb-4 text-lg">{key}</div>
+        <ul>
+          {#each values as value}
+            <li class="my-1">
+              <label>
+                <input
+                  type={key == "category" ? "radio" : "checkbox"}
+                  {value}
+                  name={key}
+                  on:change={updateFilter}
+                />
+                <span class="capitalize">{value}</span>
+              </label>
+            </li>
+          {/each}
+        </ul>
+      </div>
+    {/each}
+  {/if}
 </div>

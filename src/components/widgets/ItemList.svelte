@@ -72,3 +72,9 @@
     </li>
   {/each}
 </ul>
+
+{#if filteredItems.length == 0}
+  <p class="text-center text-slate-400 dark:text-slate-600 italic">
+    No items that match the filter
+  </p>
+{/if}
